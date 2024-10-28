@@ -1,4 +1,4 @@
-import { openAiToolsetClient } from "composio/utils/toolsets";
+import { openAiToolsetClient } from "../utils/toolsets";
 
 export async function getExpectedParamsForUser({
   composioApiKey,
