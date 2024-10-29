@@ -12,7 +12,7 @@ export async function createCalendarEvent({
   waitUntilActive,
 }: {
   entityId?: string;
-  composioApiKey: string;
+  composioApiKey?: string;
   calendarInstruction: string;
   waitUntilActive?: number;
 }) {

@@ -6,7 +6,7 @@ export async function getExpectedParamsForUser({
   authScheme,
   entityId,
 }: {
-  composioApiKey: string;
+  composioApiKey?: string;
   app: string;
   authScheme?:
     | "OAUTH2"

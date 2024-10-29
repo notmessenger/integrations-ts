@@ -7,7 +7,7 @@ export async function getEntity({
   composioApiKey,
   entityId,
 }: {
-  composioApiKey: string;
+  composioApiKey?: string;
   entityId: string;
 }): Promise<Entity> {
   const client = composioClient({ composioApiKey });

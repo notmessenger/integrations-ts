@@ -10,7 +10,7 @@ export async function initiateConnection({
 }: {
   entityId: string;
   appName: string;
-  composioApiKey: string;
+  composioApiKey?: string;
   waitUntilActive?: number;
 }) {
   try {

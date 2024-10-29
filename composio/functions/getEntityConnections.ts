@@ -5,7 +5,7 @@ export async function getEntityConnections({
   composioApiKey,
 }: {
   entityId: string;
-  composioApiKey: string;
+  composioApiKey?: string;
 }) {
   const toolSetClient = openAiToolsetClient({ composioApiKey, entityId });
   const connections = await toolSetClient.client.connectedAccounts.list();
