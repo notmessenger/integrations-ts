@@ -1,6 +1,6 @@
 {
   "name": "@restackio/integrations-composio",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/service.js",
   "types": "dist/service.d.ts",
   "scripts": {
@@ -40,7 +40,7 @@
     }
   },
   "dependencies": {
-    "@restackio/integrations-openai": "^0.0.30",
+    "@restackio/integrations-openai": "^0.0.32",
     "composio-core": "^0.2.5",
     "install": "^0.13.0"
   }

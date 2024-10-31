@@ -13,33 +13,45 @@ export async function initiateConnection({
   composioApiKey?: string;
   waitUntilActive?: number;
 }) {
-  try {
-    const entity = await getEntity({ composioApiKey, entityId });
-    const entityConnections = await entity.getConnections();
-    const entityAppConnection = entityConnections.find(
-      (connection) => connection.appName === appName
-    );
+  const entity = await getEntity({ composioApiKey, entityId });
 
-    if (
-      entityAppConnection?.status === "ACTIVE" ||
-      entityAppConnection?.status === "INITIATED"
-    ) {
-      return entityAppConnection;
-    }
+  const entityAppConnection = await entity.getConnection(appName);
 
-    const connection = await entity.initiateConnection(appName);
+  if (entityAppConnection) {
+    return {
+      authenticated: true,
+      message: `Already connected to ${appName}`,
+      redirectUrl: entityAppConnection.redirectUrl,
+    };
+  }
 
-    log.info(`Open this URL to authenticate: ${connection.redirectUrl}`, {
+  const connection = await entity.initiateConnection(appName);
+
+  if (!waitUntilActive) {
+    return {
+      authenticated: false,
+      message: `User needs to follow redirect URL to authenticate: ${connection.redirectUrl}`,
       redirectUrl: connection.redirectUrl,
+    };
+  }
+
+  try {
+    await connection.waitUntilActive(waitUntilActive);
+    return {
+      authenticated: true,
+      message: `Connected to ${appName}`,
+      redirectUrl: connection.redirectUrl,
+    };
+  } catch (error) {
+    log.error("User did not authenticate in time for application", {
+      appName,
+      error,
     });
 
-    if (!waitUntilActive) {
-      return connection;
-    }
-
-    await connection.waitUntilActive(waitUntilActive);
-    return connection;
-  } catch (error) {
-    throw FunctionFailure.nonRetryable(`Error getting entity: ${error}`);
+    return {
+      authenticated: false,
+      message: `User did not authenticate in time for application: ${appName}`,
+      redirectUrl: connection.redirectUrl,
+    };
   }
 }

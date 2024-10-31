@@ -33,8 +33,8 @@ importers:
   composio:
     dependencies:
       '@restackio/integrations-openai':
-        specifier: ^0.0.30
-        version: 0.0.30(zod@3.23.8)
+        specifier: ^0.0.32
+        version: 0.0.32(zod@3.23.8)
       composio-core:
         specifier: ^0.2.5
         version: 0.2.5(@swc/core@1.7.26)(@types/node@22.7.6)(bufferutil@4.0.8)(react@18.3.1)(sswr@2.1.0(svelte@4.2.19))(svelte@4.2.19)(typescript@4.9.5)(utf-8-validate@6.0.4)(vue@3.5.12(typescript@4.9.5))(ws@8.18.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))
@@ -574,8 +574,8 @@ packages:
     resolution: {integrity: sha512-igmdZOTPm70lB7QWTrp7hg1M/btsTIlWUqvZbPD9bbECCrVjsyOxlvqmZuL7fxkKfa2OR0H4P9TO5VLyEwCztQ==}
     engines: {node: '>=20'}
 
-  '@restackio/integrations-openai@0.0.30':
-    resolution: {integrity: sha512-TcrogL0foxRbm9G0TkdwG8RsvBA5UNQGzBPo6eKxlb4DVEAC8CKVe9gkLLQ5wBFKRFo/hFbzXiZG7jZGlQ9hGQ==}
+  '@restackio/integrations-openai@0.0.32':
+    resolution: {integrity: sha512-nGPCCqm4xzlmzCtMcr+kvks5WkexPb8z+dGP7Eom10ELZXVeGLzdmEEBS8V2DUpkTJPP7Zfqufb2LVHfkTuXzA==}
 
   '@slack/logger@4.0.0':
     resolution: {integrity: sha512-Wz7QYfPAlG/DR+DfABddUZeNgoeY7d1J39OCR2jR+v7VBsB8ezulDK5szTnDDPDwLH5IWhLvXIHlCFZV7MSKgA==}
@@ -3068,7 +3068,7 @@ snapshots:
       - uglify-js
       - webpack-cli
 
-  '@restackio/integrations-openai@0.0.30(zod@3.23.8)':
+  '@restackio/integrations-openai@0.0.32(zod@3.23.8)':
     dependencies:
       openai: 4.67.1(zod@3.23.8)
     transitivePeerDependencies:
