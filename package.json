@@ -10,7 +10,7 @@
     "*"
   ],
   "dependencies": {
-    "@restackio/ai": "^0.0.75"
+    "@restackio/ai": "^0.0.80"
   },
   "devDependencies": {
     "nodemon": "^2.0.22",

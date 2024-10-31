@@ -1,4 +1,5 @@
 import { FunctionFailure, log } from "@restackio/ai/function";
+import OpenAI from "openai/index";
 import { ChatCompletionCreateParamsNonStreaming } from "openai/resources/chat/completions";
 import { openaiClient } from "../../utils/client";
 import { openaiCost, Price } from "../../utils/cost";
@@ -17,6 +18,8 @@ export type OpenAIChatInput = {
   price?: Price;
   apiKey?: string;
   params?: ChatCompletionCreateParamsNonStreaming;
+  tools?: OpenAI.Chat.Completions.ChatCompletionTool[];
+  toolChoice?: OpenAI.Chat.Completions.ChatCompletionToolChoiceOption;
 };
 
 export const openaiChatCompletionsBase = async ({
@@ -27,6 +30,8 @@ export const openaiChatCompletionsBase = async ({
   price,
   apiKey,
   params,
+  tools,
+  toolChoice,
 }: OpenAIChatInput): Promise<{ result: ChatCompletion; cost?: number }> => {
   try {
     const openai = openaiClient({ apiKey });
@@ -57,6 +62,8 @@ export const openaiChatCompletionsBase = async ({
         },
       }),
       model,
+      ...(tools && { tools }),
+      ...(toolChoice && { tool_choice: toolChoice }),
       ...params,
       ...(isO1Model && o1ModelParams),
     };
