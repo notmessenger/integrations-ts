@@ -3,6 +3,10 @@ import { rpmToSecond } from "@restackio/ai/utils";
 import {
   openaiChatCompletionsBase,
   openaiChatCompletionsStream,
+  createAssistant,
+  createMessageOnThread,
+  createThread,
+  runThread,
 } from "./functions";
 import { openaiTaskQueue } from "./taskQueue";
 
@@ -21,7 +25,14 @@ export async function openaiService({
 }) {
   await client.startService({
     taskQueue: `${openaiTaskQueue}${taskQueueSuffix ?? ""}`,
-    functions: { openaiChatCompletionsBase, openaiChatCompletionsStream },
+    functions: {
+      openaiChatCompletionsBase,
+      openaiChatCompletionsStream,
+      createAssistant,
+      createMessageOnThread,
+      createThread,
+      runThread,
+    },
     options,
   });
 }
