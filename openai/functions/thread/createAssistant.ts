@@ -1,8 +1,8 @@
 import { ChatModel } from "openai/resources/index";
 import { FunctionFailure } from "@restackio/ai/function";
+import { Assistant, AssistantTool } from "openai/resources/beta/index";
 
 import { openaiClient } from "../../utils/client";
-import { AssistantTool } from "openai/resources/beta/assistants.mjs";
 
 export async function createAssistant({
   apiKey,
@@ -16,7 +16,7 @@ export async function createAssistant({
   instructions: string;
   tools?: AssistantTool[];
   model: ChatModel;
-}) {
+}): Promise<Assistant> {
   try {
     const openai = openaiClient({ apiKey });
 

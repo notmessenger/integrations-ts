@@ -1,4 +1,6 @@
 import { FunctionFailure } from "@restackio/ai/function";
+import { Stream } from "openai/streaming";
+import { AssistantStreamEvent } from "openai/resources/beta/index";
 
 import { openaiClient } from "../../utils/client";
 
@@ -12,7 +14,7 @@ export async function runThread({
   threadId: string;
   assistantId: string;
   stream: boolean;
-}) {
+}): Promise<Stream<AssistantStreamEvent>> {
   try {
     const openai = openaiClient({ apiKey });
 
