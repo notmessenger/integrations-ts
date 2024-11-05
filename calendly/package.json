@@ -1,0 +1,48 @@
+{
+  "name": "@restackio/integrations-calendly",
+  "version": "0.0.1",
+  "main": "dist/service.js",
+  "types": "dist/service.d.ts",
+  "scripts": {
+    "start.watch": "nodemon ./service.ts",
+    "dev": "pnpm start.watch",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/service.js",
+      "require": "./dist/service.js",
+      "types": "./dist/service.d.ts"
+    },
+    "./taskQueue": {
+      "import": "./dist/taskQueue.js",
+      "require": "./dist/taskQueue.js",
+      "types": "./dist/taskQueue.d.ts"
+    },
+    "./functions": {
+      "import": "./dist/functions/index.js",
+      "require": "./dist/functions/index.js",
+      "types": "./dist/functions/index.ts"
+    },
+    "./service": {
+      "import": "./dist/service.js",
+      "require": "./dist/service.js",
+      "types": "./dist/service.d.ts"
+    }
+  },
+  "dependencies": {
+    "@restackio/ai": "^0.0.80",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.0",
+    "pnpm": "^9.12.3",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "typescript": "^4.6.4"
+  }
+}
