@@ -1,6 +1,6 @@
 {
-  "name": "@restackio/integrations-openai",
-  "version": "0.0.32",
+  "name": "@restackio/integrations-resend",
+  "version": "0.0.1",
   "main": "dist/service.js",
   "types": "dist/service.d.ts",
   "scripts": {
@@ -10,7 +10,7 @@
     "build": "npm run clean && tsc"
   },
   "dependencies": {
-    "openai": "^4.67.1"
+    "resend": "^4.0.0"
   },
   "files": [
     "dist"
@@ -35,11 +35,6 @@
       "import": "./dist/workflows/index.js",
       "require": "./dist/workflows/index.js",
       "types": "./dist/workflows/index.ts"
-    },
-    "./types": {
-      "import": "./dist/types/index.js",
-      "require": "./dist/types/index.js",
-      "types": "./dist/types/index.ts"
     },
     "./utils": {
       "import": "./dist/utils/index.js",

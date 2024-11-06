@@ -130,13 +130,14 @@ export async function getExpectedUserParamsWorkflow(
 
 This function can be used to create events on a user's google calendar. This function makes use of the other functions exposed by the integration and can also be used to see how everything can be used to interact with both Restack's Open AI integration and Composio. This is how you can easily call this function inside one of your workflows.
 
+Make sure your provided entity has already established a connection with google calendar before calling createCalendarEvent. You can do so by calling the `initiateConnection` function.
+
 As you can see natural human language can be provided to the createCalendarEvent function in order to create an event on the user's calendar.
 Internally createCalendarEvent will:
 
-1. Initiate a connection to the 'googlecalendar' app on composio.
-2. Get the `googlecalendar_create_event` composio tool to pass it to the open ai restack integration.
-3. Wait for 60 seconds for the user to go through the auth flow with google calendar.
-4. When user finishes this short flow in under 60 seconds the event will be created on the calendar automatically.
+1. Get the `googlecalendar_create_event` composio tool to pass it to the open ai restack integration.
+2. Wait for 60 seconds for the user to go through the auth flow with google calendar.
+3. When user finishes this short flow in under 60 seconds the event will be created on the calendar automatically.
 
 ```typescript
 /// workflows/createGoogleCalendarEventWorkflow.ts
@@ -152,7 +153,6 @@ export async function createGoogleCalendarEventWorkflow(
     composioApiKey: "your_composio_api_key",
     entityId,
     calendarInstruction: `Create a 1 hour meeting event at 5:30PM tomorrow. Today's date is ${today}`,
-    waitUntilActive: 60,
   });
 }
 ```
