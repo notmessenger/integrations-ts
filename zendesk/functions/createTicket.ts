@@ -108,154 +108,38 @@ export async function createTicket({
     const zendesk = zendeskClient({ token, subdomain, username });
 
     const ticket: Record<string, boolean | number | Array<number> | object | string | Array<string> | undefined | Array<CustomField> | Priority | Status | TicketComment> = {
-      assignee_email: undefined,
-      assignee_id: undefined,
-      attribute_value_ids: undefined,
-      brand_id: undefined,
-      collaborator_ids: undefined,
-      comment,
-      custom_fields: undefined,
-      custom_status_id: undefined,
-      due_at: undefined,
-      email_ccs: undefined,
-      external_id: undefined,
-      followers: undefined,
-      group_id: undefined,
-      macro_id: undefined,
-      organization_id: undefined,
-      priority: undefined,
-      problem_id: undefined,
-      recipient: undefined,
-      requester: undefined,
-      requester_id,
-      safe_update: undefined,
-      sharing_agreement_ids: undefined,
-      status: undefined,
-      subject: undefined,
-      submitter_id: undefined,
-      tags: undefined,
-      ticket_form_id: undefined,
-      type: undefined,
-      updated_stamp: undefined,
-      via: undefined,
-      via_id: undefined,
+      ...(assignee_email && { assignee_email }),
+      ...(assignee_id && { assignee_id }),
+      ...(attribute_value_ids && { attribute_value_ids }),
+      ...(brand_id && { brand_id }),
+      ...(collaborator_ids && { collaborator_ids }),
+      ...(comment && { comment }),
+      ...(custom_fields && { custom_fields }),
+      ...(custom_status_id && { custom_status_id }),
+      ...(due_at && { due_at }),
+      ...(email_ccs && { email_ccs }),
+      ...(external_id && { external_id }),
+      ...(followers && { followers }),
+      ...(group_id && { group_id }),
+      ...(macro_id && { macro_id }),
+      ...(organization_id && { organization_id }),
+      ...(priority && { priority }),
+      ...(problem_id && { problem_id }),
+      ...(recipient && { recipient }),
+      ...(requester && { requester }),
+      ...(requester_id && { requester_id }),
+      ...(safe_update && { safe_update }),
+      ...(sharing_agreement_ids && { sharing_agreement_ids }),
+      ...(status && { status }),
+      ...(subject && { subject }),
+      ...(submitter_id && { submitter_id }),
+      ...(tags && { tags }),
+      ...(ticket_form_id && { ticket_form_id }),
+      ...(type && { type }),
+      ...(updated_stamp && { updated_stamp }),
+      ...(via && { via }),
+      ...(via_id && { via_id }),
     };
-
-    if (assignee_email) {
-      ticket.assignee_email = assignee_email;
-    }
-
-    if (assignee_id) {
-      ticket.assignee_id = assignee_id;
-    }
-
-    if (attribute_value_ids) {
-      ticket.attribute_value_ids = attribute_value_ids;
-    }
-
-    if (brand_id) {
-      ticket.brand_id = brand_id;
-    }
-
-    if (collaborator_ids) {
-      ticket.collaborator_ids = collaborator_ids;
-    }
-
-    if (custom_fields) {
-      ticket.custom_fields = custom_fields;
-    }
-
-    if (custom_status_id) {
-      ticket.custom_status_id = custom_status_id;
-    }
-
-    if (due_at) {
-      ticket.due_at = due_at;
-    }
-
-    if (email_ccs) {
-      ticket.email_ccs = email_ccs;
-    }
-
-    if (external_id) {
-      ticket.external_id = external_id;
-    }
-
-    if (followers) {
-      ticket.followers = followers;
-    }
-
-    if (group_id) {
-      ticket.group_id = group_id;
-    }
-
-    if (macro_id) {
-      ticket.macro_id = macro_id;
-    }
-
-    if (organization_id) {
-      ticket.organization_id = organization_id;
-    }
-
-    if (priority) {
-      ticket.priority = priority;
-    }
-
-    if (problem_id) {
-      ticket.problem_id = problem_id;
-    }
-
-    if (recipient) {
-      ticket.recipient = recipient;
-    }
-
-    if (requester) {
-      ticket.requester = requester;
-    }
-
-    if (safe_update) {
-      ticket.safe_update = safe_update;
-    }
-
-    if (sharing_agreement_ids) {
-      ticket.sharing_agreement_ids = sharing_agreement_ids;
-    }
-
-    if (status) {
-      ticket.status = status;
-    }
-
-    if (subject) {
-      ticket.subject = subject;
-    }
-
-    if (submitter_id) {
-      ticket.submitter_id = submitter_id;
-    }
-
-    if (tags) {
-      ticket.tags = tags;
-    }
-
-    if (ticket_form_id) {
-      ticket.ticket_form_id = ticket_form_id;
-    }
-
-    if (type) {
-      ticket.type = type;
-    }
-
-    if (updated_stamp) {
-      ticket.updated_stamp = updated_stamp;
-    }
-
-    if (via) {
-      ticket.via = via;
-    }
-
-    if (via_id) {
-      ticket.via_id = via_id;
-    }
 
     const response = await zendesk.tickets.create({
       ticket
